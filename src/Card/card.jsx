@@ -1,8 +1,15 @@
+import { useState } from "react";
 import "./card.css";
 
 function Card({ name, imageLink, soundHandler }) {
-  return (
-    <div className="card-container" onClick={soundHandler}>
+  const [wasClicked, setWasClicked] = useState(false)
+  
+  const handleClick = () => {
+    setWasClicked(!wasClicked)
+    soundHandler()
+  }
+    return (
+    <div className="card-container" onClick={handleClick}>
       <div className="picture-container">
         <img src={imageLink} alt={name} />
       </div>
