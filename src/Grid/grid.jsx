@@ -14,6 +14,10 @@ function Grid() {
     );
   });
 
+  const shufflePokemons = (array) => {
+    return array.sort(() => 0.5 - Math.random());
+  };
+
   useEffect(() => {
     const pokemonNames = [
       "banette",
@@ -42,6 +46,9 @@ function Grid() {
             ...pokemonList,
             { legacy, id, name, front_default },
           ]);
+        })
+        .catch((error) => {
+          console.log(error);
         });
     });
   }, []);
