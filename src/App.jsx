@@ -1,8 +1,8 @@
-
+import { Grid } from "./Grid/grid"
 
 export default function App() {
     return(
-        <div>Hello</div>
+        <Grid/>
     )
 }
 
