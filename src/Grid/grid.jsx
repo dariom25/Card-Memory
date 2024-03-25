@@ -31,7 +31,7 @@ function Grid() {
       "spectrier",
     ];
     pokemonNames.forEach((pokemon) => {
-      fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`, { mode: "cors" })
+    if (pokemonInfos.length === 0) {fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`, { mode: "cors" })
         .then(function (response) {
           return response.json();
         })
@@ -50,8 +50,8 @@ function Grid() {
         .catch((error) => {
           console.log(error);
         });
-    });
-  }, []);
+    }})
+  }, [pokemonInfos]);
 
   return <div className="grid-container">{pokemons}</div>;
 }
