@@ -16,13 +16,10 @@ function Grid() {
 
   useEffect(() => {
     const pokemonNames = [
-      "duskull",
       "banette",
       "misdreavus",
       "gengar",
-      "phantump",
       "lampent",
-      "shiinotic",
       "mismagius",
       "drifloon",
       "sableye",
