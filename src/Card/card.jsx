@@ -1,16 +1,17 @@
 import { useState } from "react";
 import "./card.css";
 
-function Card({ name, imageLink, soundHandler }) {
-  const [wasClicked, setWasClicked] = useState(false)
+function Card({ name, imageLink, soundHandler, shuffleHandler }) {
+  const [wasClicked, setWasClicked] = useState(false);
   const firstLetterUpperCase = (string) => {
-    return string[0].toUpperCase() + string.slice(1)
-  }
+    return string[0].toUpperCase() + string.slice(1);
+  };
   const handleClick = () => {
-    setWasClicked(!wasClicked)
-    soundHandler()
-  }
-    return (
+    setWasClicked(!wasClicked);
+    soundHandler();
+    shuffleHandler();
+  };
+  return (
     <div className="card-container" onClick={handleClick}>
       <div className="picture-container">
         <img src={imageLink} alt={firstLetterUpperCase(name)} />
