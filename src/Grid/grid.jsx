@@ -3,7 +3,7 @@ import { Card } from "../Card/card.jsx";
 import { useEffect, useState } from "react";
 import { shuffle } from "lodash";
 
-function Grid() {
+function Grid({scoreHandler, scoreResetHandler, highscoreHandler}) {
   const [pokemonInfos, setPokemonInfos] = useState([]);
 
   useEffect(() => {
@@ -52,6 +52,9 @@ function Grid() {
             name={pokemon.name}
             imageLink={pokemon.front_default}
             shuffleHandler={() => setPokemonInfos(shuffle(pokemonInfos))}
+            scoreHandler={scoreHandler}
+            scoreResetHandler={scoreResetHandler}
+            highscoreHandler={highscoreHandler}
           />
         );
       })}
