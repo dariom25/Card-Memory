@@ -8,7 +8,6 @@ function Card({ name, imageLink, soundHandler, shuffleHandler }) {
   };
   const handleClick = () => {
     setWasClicked(!wasClicked);
-    soundHandler();
     shuffleHandler();
   };
   return (

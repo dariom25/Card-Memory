@@ -1,22 +1,10 @@
 import "./grid.css";
 import { Card } from "../Card/card.jsx";
 import { useEffect, useState } from "react";
+import { shuffle } from "lodash";
 
 function Grid() {
   const [pokemonInfos, setPokemonInfos] = useState([]);
-  const pokemons = pokemonInfos.map((pokemon) => {
-    return (
-      <Card
-        key={pokemon.id}
-        name={pokemon.name}
-        imageLink={pokemon.front_default}
-      />
-    );
-  });
-
-  const shufflePokemons = (array) => {
-    return array.sort(() => 0.5 - Math.random());
-  };
 
   useEffect(() => {
     const pokemonNames = [
@@ -31,29 +19,44 @@ function Grid() {
       "spectrier",
     ];
     pokemonNames.forEach((pokemon) => {
-    if (pokemonInfos.length === 0) {fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`, { mode: "cors" })
-        .then(function (response) {
-          return response.json();
-        })
-        .then(function (response) {
-          const {
-            cries: { legacy },
-            id,
-            species: { name },
-            sprites: { front_default },
-          } = response;
-          setPokemonInfos((pokemonList) => [
-            ...pokemonList,
-            { legacy, id, name, front_default },
-          ]);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }})
+      if (pokemonInfos.length === 0) {
+        fetch(`https://pokeapi.co/api/v2/pokemon/${pokemon}`, { mode: "cors" })
+          .then(function (response) {
+            return response.json();
+          })
+          .then(function (response) {
+            const {
+              cries: { legacy },
+              id,
+              species: { name },
+              sprites: { front_default },
+            } = response;
+            setPokemonInfos((pokemonList) => [
+              ...pokemonList,
+              { legacy, id, name, front_default },
+            ]);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+    });
   }, [pokemonInfos]);
 
-  return <div className="grid-container">{pokemons}</div>;
+  return (
+    <div className="grid-container">
+      {pokemonInfos.map((pokemon) => {
+        return (
+          <Card
+            key={pokemon.id}
+            name={pokemon.name}
+            imageLink={pokemon.front_default}
+            shuffleHandler={() => setPokemonInfos(shuffle(pokemonInfos))}
+          />
+        );
+      })}
+    </div>
+  );
 }
 
 export { Grid };
