@@ -15,7 +15,7 @@ export default function App() {
   }
 
   const updateHighscore = () => {
-    setHighscore(prevHighscore => prevHighscore = score)
+    if (highscore < score) {setHighscore(prevHighscore => prevHighscore = score)}
   }
   
     return (
