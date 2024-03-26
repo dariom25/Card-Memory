@@ -1,4 +1,4 @@
-function Scoreboard({ score, highscore = 0 }) {
+function Scoreboard({ score, highscore }) {
   return (
     <div className="scoreboard-container">
       <p className="score">Current score: {score}</p>
