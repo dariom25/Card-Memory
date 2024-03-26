@@ -1,8 +1,11 @@
-import { Grid } from "./Grid/grid"
+import { Grid } from "./Grid/grid";
+import { Scoreboard } from "./Scoreboard/scoreboard";
 
 export default function App() {
-    return(
-        <Grid/>
-    )
+  return (
+    <>
+      <Scoreboard />
+      <Grid />
+    </>
+  );
 }
-
