@@ -31,9 +31,11 @@ function Grid({scoreHandler, scoreResetHandler, highscoreHandler}) {
               species: { name },
               sprites: { front_default },
             } = response;
+            const wasClicked = {clicked: false}
+            const {clicked} = wasClicked
             setPokemonInfos((pokemonList) => [
               ...pokemonList,
-              { legacy, id, name, front_default },
+              { legacy, id, name, front_default, clicked },
             ]);
           })
           .catch((error) => {
