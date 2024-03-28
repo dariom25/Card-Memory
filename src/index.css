@@ -2,4 +2,10 @@
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
   margin: 0px calc(24% - 15vw);
+  font-family: "Creepster", sans-serif, system-ui;
+}
+
+.header{
+  display: flex;
+  justify-content: space-between;
 }
