@@ -1,29 +1,29 @@
-import { useState } from "react";
 import "./card.css";
 
-function Card({ name, imageLink, scoreHandler, shuffleHandler, scoreResetHandler, highscoreHandler }) {
-  const [wasClicked, setWasClicked] = useState(false);
+function Card({ name, imageLink, scoreHandler, scoreResetHandler, highscoreHandler, clickStatus, toggleClickStatus, id }) {
   const firstLetterUpperCase = (string) => {
     return string[0].toUpperCase() + string.slice(1);
   };
 
   const handleScoreFunctions = () => {
-    !wasClicked ? handleClick() : handleAlreadyClickedCard()
+    clickStatus ? handleAlreadyClickedCard() : handleClick()
+  }
+
+  const handleToggleClickStatus = () => {
+    toggleClickStatus(id)
   }
 
   const handleAlreadyClickedCard = () => {
     highscoreHandler();
     scoreResetHandler();
-    shuffleHandler();
   }
 
   const handleClick = () => {
-    setWasClicked(!wasClicked);
+    handleToggleClickStatus();
     scoreHandler();
-    shuffleHandler();
   };
   return (
-    <div className="card-container" onClick={handleScoreFunctions}>
+    <div className="card-container" onClick={handleScoreFunctions} id={id}>
       <div className="picture-container">
         <img src={imageLink} alt={firstLetterUpperCase(name)} />
       </div>
