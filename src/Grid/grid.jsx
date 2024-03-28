@@ -46,14 +46,14 @@ function Grid({ scoreHandler, scoreResetHandler, highscoreHandler }) {
           })
           .then(function (response) {
             const {
-              cries: { legacy },
+              cries: { latest, legacy },
               id,
               species: { name },
               sprites: { front_default },
             } = response;
             setPokemonInfos((pokemonList) => [
               ...pokemonList,
-              { legacy, id, name, front_default, clicked: false },
+              { latest, legacy, id, name, front_default, clicked: false },
             ]);
           })
           .catch((error) => {
@@ -79,6 +79,7 @@ function Grid({ scoreHandler, scoreResetHandler, highscoreHandler }) {
             toggleClickStatus={toggleClickStatus}
             id={pokemon.id}
             resetClickStatus={resetClickStatus}
+            soundPath={pokemon.id === 897 ? pokemon.latest : pokemon.legacy}
           />
         );
       })}
