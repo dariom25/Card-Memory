@@ -3,8 +3,17 @@ import { Card } from "../Card/card.jsx";
 import { useEffect, useState } from "react";
 import { shuffle } from "lodash";
 
-function Grid({scoreHandler, scoreResetHandler, highscoreHandler}) {
+function Grid({ scoreHandler, scoreResetHandler, highscoreHandler }) {
   const [pokemonInfos, setPokemonInfos] = useState([]);
+
+  const toggleClickStatus = (pokemonId) => {
+    setPokemonInfos((prevInfos) => {
+      const updatedPokemonInfos = prevInfos.map((pokemon) => {
+        return pokemon.id === pokemonId ? { ...pokemon, clicked: true } : pokemon;
+      });
+      return shuffle(updatedPokemonInfos);
+    });
+  };
 
   useEffect(() => {
     const pokemonNames = [
@@ -31,11 +40,9 @@ function Grid({scoreHandler, scoreResetHandler, highscoreHandler}) {
               species: { name },
               sprites: { front_default },
             } = response;
-            const wasClicked = {clicked: false}
-            const {clicked} = wasClicked
             setPokemonInfos((pokemonList) => [
               ...pokemonList,
-              { legacy, id, name, front_default, clicked },
+              { legacy, id, name, front_default, clicked: false },
             ]);
           })
           .catch((error) => {
@@ -57,6 +64,9 @@ function Grid({scoreHandler, scoreResetHandler, highscoreHandler}) {
             scoreHandler={scoreHandler}
             scoreResetHandler={scoreResetHandler}
             highscoreHandler={highscoreHandler}
+            clickStatus={pokemon.clicked}
+            toggleClickStatus={toggleClickStatus}
+            id={pokemon.id}
           />
         );
       })}
