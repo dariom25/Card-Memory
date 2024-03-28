@@ -1,22 +1,33 @@
 import "./card.css";
 
-function Card({ name, imageLink, scoreHandler, scoreResetHandler, highscoreHandler, clickStatus, toggleClickStatus, id }) {
+function Card({
+  name,
+  imageLink,
+  scoreHandler,
+  scoreResetHandler,
+  highscoreHandler,
+  clickStatus,
+  toggleClickStatus,
+  id,
+  resetClickStatus,
+}) {
   const firstLetterUpperCase = (string) => {
     return string[0].toUpperCase() + string.slice(1);
   };
 
   const handleScoreFunctions = () => {
-    clickStatus ? handleAlreadyClickedCard() : handleClick()
-  }
+    clickStatus ? handleAlreadyClickedCard() : handleClick();
+  };
 
   const handleToggleClickStatus = () => {
-    toggleClickStatus(id)
-  }
+    toggleClickStatus(id);
+  };
 
   const handleAlreadyClickedCard = () => {
     highscoreHandler();
     scoreResetHandler();
-  }
+    resetClickStatus();
+  };
 
   const handleClick = () => {
     handleToggleClickStatus();
