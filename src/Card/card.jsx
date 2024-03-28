@@ -1,4 +1,5 @@
 import "./card.css";
+import { useSound } from "use-sound";
 
 function Card({
   name,
@@ -10,7 +11,10 @@ function Card({
   toggleClickStatus,
   id,
   resetClickStatus,
+  soundPath
 }) {
+  const [play] = useSound(soundPath);
+  
   const firstLetterUpperCase = (string) => {
     return string[0].toUpperCase() + string.slice(1);
   };
@@ -20,6 +24,7 @@ function Card({
   };
 
   const handleToggleClickStatus = () => {
+    play();
     toggleClickStatus(id);
   };
 
