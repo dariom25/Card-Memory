@@ -1,9 +1,15 @@
 :root {
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: var(--main-font);
+  background-color: var(--main-bg);
   margin: 0px calc(24% - 15vw);
   font-family: "Creepster", sans-serif, system-ui;
   letter-spacing: 1.3px;
+
+  --main-bg: #232528;
+  --main-font: #fbfbfb;
+  --accent-bg: #2a2a72;
+  --accent-color: #b6244f;
+  --blue-white: #eaf6ff;
 }
 
 .header{
