@@ -3,6 +3,7 @@
   background-color: #242424;
   margin: 0px calc(24% - 15vw);
   font-family: "Creepster", sans-serif, system-ui;
+  letter-spacing: 1.3px;
 }
 
 .header{
