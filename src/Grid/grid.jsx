@@ -20,7 +20,7 @@ function Grid({ scoreHandler, scoreResetHandler, highscoreHandler }) {
   const resetClickStatus = () => {
     setPokemonInfos((prevInfos) => {
       const updatedPokemonInfos = prevInfos.map((pokemon) => {
-        return { ...pokemon, click: false };
+        return { ...pokemon, clicked: false };
       });
       return shuffle(updatedPokemonInfos);
     });
