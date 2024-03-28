@@ -9,7 +9,18 @@ function Grid({ scoreHandler, scoreResetHandler, highscoreHandler }) {
   const toggleClickStatus = (pokemonId) => {
     setPokemonInfos((prevInfos) => {
       const updatedPokemonInfos = prevInfos.map((pokemon) => {
-        return pokemon.id === pokemonId ? { ...pokemon, clicked: true } : pokemon;
+        return pokemon.id === pokemonId
+          ? { ...pokemon, clicked: true }
+          : pokemon;
+      });
+      return shuffle(updatedPokemonInfos);
+    });
+  };
+
+  const resetClickStatus = () => {
+    setPokemonInfos((prevInfos) => {
+      const updatedPokemonInfos = prevInfos.map((pokemon) => {
+        return { ...pokemon, click: false };
       });
       return shuffle(updatedPokemonInfos);
     });
@@ -67,6 +78,7 @@ function Grid({ scoreHandler, scoreResetHandler, highscoreHandler }) {
             clickStatus={pokemon.clicked}
             toggleClickStatus={toggleClickStatus}
             id={pokemon.id}
+            resetClickStatus={resetClickStatus}
           />
         );
       })}
