@@ -23,8 +23,10 @@ export default function App() {
 
   return (
     <>
-      <Title></Title>
-      <Scoreboard score={score} highscore={highscore} />
+      <div className="header">
+        <Title></Title>
+        <Scoreboard score={score} highscore={highscore} />
+      </div>
       <Grid
         scoreHandler={updateScore}
         scoreResetHandler={resetScore}
