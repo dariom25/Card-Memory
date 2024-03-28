@@ -38,7 +38,7 @@ function Card({
       <div className="picture-container">
         <img src={imageLink} alt={firstLetterUpperCase(name)} />
       </div>
-      <h3>{firstLetterUpperCase(name)}</h3>
+      <h2>{firstLetterUpperCase(name)}</h2>
     </div>
   );
 }
